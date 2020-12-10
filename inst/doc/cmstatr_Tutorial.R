@@ -4,6 +4,15 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+# If any of the required packages are unavailable,
+# don't re-run the code
+required <- c("dplyr", "ggplot2", "tidyr", "cmstatr", "purrr")
+if (!all(unlist(lapply(required, function(pkg) {
+    requireNamespace(pkg, quietly = TRUE)}
+  )))) {
+  knitr::opts_chunk$set(eval = FALSE)
+}
+
 ## ----message=FALSE------------------------------------------------------------
 library(cmstatr)
 library(dplyr)

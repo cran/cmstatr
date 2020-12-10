@@ -15,6 +15,22 @@
 
 <title>Anderson-Darling k-Sample Test</title>
 
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
 
 
 
@@ -297,7 +313,7 @@ ADC = 1 + \sigma_n \left(1.96 + \frac{1.149}{\sqrt{k - 1}} - \frac{0.391}{k - 1}
 <p>[1] “Composite Materials Handbook, Volume 1. Polymer Matrix Composites Guideline for Characterization of Structural Materials,” SAE International, CMH-17-1G, Mar. 2012.</p>
 </div>
 <div id="ref-Stephens1987">
-<p>[2] F. Scholz and M. Stephens, “K-Sample Anderson–Darling Tests,” <em>Journal of the American Statistical Association</em>, vol. 82, no. 399. pp. 918–924, Sep-1987.</p>
+<p>[2] F. W. Scholz and M. Stephens, “K-Sample Anderson–Darling Tests,” <em>Journal of the American Statistical Association</em>, vol. 82, no. 399. pp. 918–924, Sep-1987.</p>
 </div>
 </div>
 </div>
