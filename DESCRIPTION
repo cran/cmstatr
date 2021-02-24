@@ -1,8 +1,8 @@
 Package: cmstatr
 Type: Package
 Title: Statistical Methods for Composite Material Data
-Version: 0.7.1
-Date: 2020-12-09
+Version: 0.8.0
+Date: 2021-02-23
 Depends: R (>= 3.3)
 Authors@R: c(
     person("Stefan", "Kloppenborg", email = "stefan@kloppenborg.ca",
@@ -39,10 +39,10 @@ RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Language: en-US
 NeedsCompilation: no
-Packaged: 2020-12-09 22:41:13 UTC; skloppenborg
+Packaged: 2021-02-24 14:05:19 UTC; stefan
 Author: Stefan Kloppenborg [aut, cre],
   Billy Cheng [ctb],
   Ally Fraser [ctb]
 Maintainer: Stefan Kloppenborg <stefan@kloppenborg.ca>
 Repository: CRAN
-Date/Publication: 2020-12-10 08:10:02 UTC
+Date/Publication: 2021-02-24 14:30:02 UTC
