@@ -179,3 +179,19 @@ single_point_results %>%
   ggtitle("Property Graph") +
   theme_bw()
 
+## -----------------------------------------------------------------------------
+carbon.fabric.2 %>%
+  mutate(panel = as.character(panel)) %>%
+  filter(test == "WT") %>%
+  nested_data_plot(strength,
+                   groups = c(batch, panel))
+
+## -----------------------------------------------------------------------------
+carbon.fabric.2 %>%
+  mutate(panel = as.character(panel)) %>%
+  filter(test == "WT" & condition == "RTD") %>%
+  nested_data_plot(strength,
+                   groups = c(batch, panel),
+                   fill = batch,
+                   color = panel)
+

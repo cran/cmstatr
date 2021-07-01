@@ -1,8 +1,8 @@
 Package: cmstatr
 Type: Package
 Title: Statistical Methods for Composite Material Data
-Version: 0.8.0
-Date: 2021-02-23
+Version: 0.9.0
+Date: 2021-06-30
 Depends: R (>= 3.3)
 Authors@R: c(
     person("Stefan", "Kloppenborg", email = "stefan@kloppenborg.ca",
@@ -10,7 +10,9 @@ Authors@R: c(
     person("Billy", "Cheng", email = "bcheng@comtekadvanced.com",
       role = c("ctb")),
     person("Ally", "Fraser", email = "ally.fraser25@gmail.com",
-      role = c("ctb"))
+      role = c("ctb")),
+    person("Comtek Advanced Structures, Ltd.",
+      role = c("fnd"))
   )
 Description: An implementation of the statistical methods commonly
   used for advanced composite materials in aerospace applications.
@@ -26,23 +28,25 @@ Description: An implementation of the statistical methods commonly
   Composite Materials Handbook, Volume 1 (2012, ISBN: 978-0-7680-7811-4).
   Additional details about this package are available in the paper by
   Kloppenborg (2020, <doi:10.21105/joss.02265>).
-URL: https://www.cmstatr.net/,
-        https://github.com/ComtekAdvancedStructures/cmstatr
-BugReports: https://github.com/ComtekAdvancedStructures/cmstatr/issues
+URL: https://www.cmstatr.net/, https://github.com/cmstatr/cmstatr
+BugReports: https://github.com/cmstatr/cmstatr/issues
 License: AGPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr, generics, ggplot2, kSamples, MASS, rlang, stats, tibble
-Suggests: knitr, lintr, purrr, rmarkdown, spelling, testthat, tidyr,
-        vdiffr
+Imports: dplyr, generics, ggplot2, kSamples, MASS, purrr, rlang, stats,
+        tibble
+Suggests: knitr, lintr, rmarkdown, spelling, testthat, tidyr, vdiffr
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Language: en-US
+Config/testthat/parallel: true
+Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2021-02-24 14:05:19 UTC; stefan
+Packaged: 2021-07-01 00:56:58 UTC; stefan
 Author: Stefan Kloppenborg [aut, cre],
   Billy Cheng [ctb],
-  Ally Fraser [ctb]
+  Ally Fraser [ctb],
+  Comtek Advanced Structures, Ltd. [fnd]
 Maintainer: Stefan Kloppenborg <stefan@kloppenborg.ca>
 Repository: CRAN
-Date/Publication: 2021-02-24 14:30:02 UTC
+Date/Publication: 2021-07-01 05:10:02 UTC
