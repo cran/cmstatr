@@ -7,12 +7,14 @@ knitr::opts_chunk$set(
 
 # If any of the required packages are unavailable,
 # don't re-run the code
+# nolint start
 required <- c("dplyr", "ggplot2", "tidyr", "cmstatr")
 if (!all(unlist(lapply(required, function(pkg) {
     requireNamespace(pkg, quietly = TRUE)}
   )))) {
   knitr::opts_chunk$set(eval = FALSE)
 }
+# nolint end
 
 ## ----message=FALSE------------------------------------------------------------
 library(dplyr)

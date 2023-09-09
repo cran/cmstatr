@@ -15,25 +15,38 @@
 
 <title>cmstatr Tutorial</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
@@ -51,55 +64,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -108,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -126,7 +145,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -144,342 +343,473 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p><code>cmstatr</code> is an R package for analyzing composite material data for use in the aerospace industry. The statistical methods are based on those published in <a href="https://www.cmh17.org/">CMH-17-1G</a>. This package is intended to facilitate reproducible statistical analysis of composite materials. In this tutorial, we’ll explore the basic functionality of <code>cmstatr</code>.</p>
-<p>Before we can actually use the package, we’ll need to load it. We’ll also load the <code>dplyr</code> package, which we’ll talk about shortly. There are also a few other packages that we’ll load. These could all be loaded by loading the <code>tidyverse</code> package instead.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmstatr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code></pre></div>
+<p><code>cmstatr</code> is an R package for analyzing composite material
+data for use in the aerospace industry. The statistical methods are
+based on those published in <a href="https://www.cmh17.org/">CMH-17-1G</a>. This package is intended to
+facilitate reproducible statistical analysis of composite materials. In
+this tutorial, we’ll explore the basic functionality of
+<code>cmstatr</code>.</p>
+<p>Before we can actually use the package, we’ll need to load it. We’ll
+also load the <code>dplyr</code> package, which we’ll talk about
+shortly. There are also a few other packages that we’ll load. These
+could all be loaded by loading the <code>tidyverse</code> package
+instead.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(cmstatr)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">library</span>(purrr)</span></code></pre></div>
 <div id="input-data" class="section level1">
 <h1>Input Data</h1>
-<p><code>cmstatr</code> is built with the assumption that the data is in (so called) <a href="http://vita.had.co.nz/papers/tidy-data.html">tidy data</a> format. This means that the data is in a data frame and that each observation (i.e. test result) has its own row and that each variable has its own column. Included in this package is a sample composite material data set (this data set is fictional: don’t use it for anything other than learning this package). The data set <code>carbon.fabric.2</code> has the expected format. We’ll just show the first 10 rows of the data for now.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>carbon.fabric<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    test condition batch panel thickness nplies strength modulus failure_mode</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    WT       CTD     A     1     0.112     14  142.817   9.285          LAT</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    WT       CTD     A     1     0.113     14  135.901   9.133          LAT</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    WT       CTD     A     1     0.113     14  132.511   9.253          LAT</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    WT       CTD     A     2     0.112     14  135.586   9.150          LAB</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    WT       CTD     A     2     0.113     14  125.145   9.270          LAB</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    WT       CTD     A     2     0.113     14  135.203   9.189          LGM</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    WT       CTD     A     2     0.113     14  128.547   9.088          LAB</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    WT       CTD     B     1     0.113     14  127.709   9.199          LGM</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9    WT       CTD     B     1     0.113     14  127.074   9.058          LGM</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10   WT       CTD     B     1     0.114     14  126.879   9.306          LGM</span></span></code></pre></div>
-<p>If your data set is not yet in this type of format (note: that the column names <em>do not</em> need to match the column names in the example), there are many ways to get it into this format. One of the easier ways of doing so is to use the <a href="https://tidyr.tidyverse.org/"><code>tidyr</code></a> package. The use of this package is outside the scope of this vignette.</p>
+<p><code>cmstatr</code> is built with the assumption that the data is in
+(so called) <a href="http://vita.had.co.nz/papers/tidy-data.html">tidy
+data</a> format. This means that the data is in a data frame and that
+each observation (i.e. test result) has its own row and that each
+variable has its own column. Included in this package is a sample
+composite material data set (this data set is fictional: don’t use it
+for anything other than learning this package). The data set
+<code>carbon.fabric.2</code> has the expected format. We’ll just show
+the first 10 rows of the data for now.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>carbon.fabric<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#&gt;    test condition batch panel thickness nplies strength modulus failure_mode</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; 1    WT       CTD     A     1     0.112     14  142.817   9.285          LAT</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#&gt; 2    WT       CTD     A     1     0.113     14  135.901   9.133          LAT</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; 3    WT       CTD     A     1     0.113     14  132.511   9.253          LAT</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt; 4    WT       CTD     A     2     0.112     14  135.586   9.150          LAB</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt; 5    WT       CTD     A     2     0.113     14  125.145   9.270          LAB</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt; 6    WT       CTD     A     2     0.113     14  135.203   9.189          LGM</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; 7    WT       CTD     A     2     0.113     14  128.547   9.088          LAB</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt; 8    WT       CTD     B     1     0.113     14  127.709   9.199          LGM</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt; 9    WT       CTD     B     1     0.113     14  127.074   9.058          LGM</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; 10   WT       CTD     B     1     0.114     14  126.879   9.306          LGM</span></span></code></pre></div>
+<p>If your data set is not yet in this type of format (note: that the
+column names <em>do not</em> need to match the column names in the
+example), there are many ways to get it into this format. One of the
+easier ways of doing so is to use the <a href="https://tidyr.tidyverse.org/"><code>tidyr</code></a> package. The
+use of this package is outside the scope of this vignette.</p>
 </div>
 <div id="working-with-data" class="section level1">
 <h1>Working With Data</h1>
-<p>Throughout this vignette, we will be using some of the <code>tidyverse</code> tools for working with data. There are several ways to work with data in R, but in the opinion of the author of this vignette, the <code>tidyverse</code> provides the easiest way to do so. As such, this is the approach used in this vignette. Feel free to use whichever approach works best for you.</p>
+<p>Throughout this vignette, we will be using some of the
+<code>tidyverse</code> tools for working with data. There are several
+ways to work with data in R, but in the opinion of the author of this
+vignette, the <code>tidyverse</code> provides the easiest way to do so.
+As such, this is the approach used in this vignette. Feel free to use
+whichever approach works best for you.</p>
 </div>
 <div id="normalizing-data-to-cured-ply-thickness" class="section level1">
 <h1>Normalizing Data to Cured Ply Thickness</h1>
-<p>Very often, you’ll want to normalize as-measured strength data to a nominal cured ply thickness for fiber-dominated properties. Very often, this will reduce the apparent variance in the data. The <code>normalize_ply_thickness</code> function can be used to normalize strength or modulus data to a certain cured ply thickness. This function takes three arguments: the value to normalize (i.e.. strength or modulus), the measured thickness and the nominal thickness. In our case, the nominal cured ply thickness of the material is <span class="math inline">\(0.0079\)</span>. We can then normalize the warp-tension and fill-compression data as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> carbon.fabric<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">|</span> test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">strength.norm =</span> <span class="fu">normalize_ply_thickness</span>(strength,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                                 thickness <span class="sc">/</span> nplies,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                                 <span class="fl">0.0079</span>))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    test condition batch panel thickness nplies strength modulus failure_mode</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    WT       CTD     A     1     0.112     14  142.817   9.285          LAT</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    WT       CTD     A     1     0.113     14  135.901   9.133          LAT</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    WT       CTD     A     1     0.113     14  132.511   9.253          LAT</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    WT       CTD     A     2     0.112     14  135.586   9.150          LAB</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    WT       CTD     A     2     0.113     14  125.145   9.270          LAB</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    WT       CTD     A     2     0.113     14  135.203   9.189          LGM</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    WT       CTD     A     2     0.113     14  128.547   9.088          LAB</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    WT       CTD     B     1     0.113     14  127.709   9.199          LGM</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9    WT       CTD     B     1     0.113     14  127.074   9.058          LGM</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10   WT       CTD     B     1     0.114     14  126.879   9.306          LGM</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    strength.norm</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1       144.6248</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2       138.8500</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3       135.3865</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4       137.3023</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5       127.8606</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6       138.1369</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7       131.3364</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8       130.4803</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9       129.8315</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10      130.7794</span></span></code></pre></div>
+<p>Very often, you’ll want to normalize as-measured strength data to a
+nominal cured ply thickness for fiber-dominated properties. Very often,
+this will reduce the apparent variance in the data. The
+<code>normalize_ply_thickness</code> function can be used to normalize
+strength or modulus data to a certain cured ply thickness. This function
+takes three arguments: the value to normalize (i.e.. strength or
+modulus), the measured thickness and the nominal thickness. In our case,
+the nominal cured ply thickness of the material is <span class="math inline">\(0.0079\)</span>. We can then normalize the
+warp-tension and fill-compression data as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>norm_data <span class="ot">&lt;-</span> carbon.fabric<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">|</span> test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">strength.norm =</span> <span class="fu">normalize_ply_thickness</span>(strength,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>                                                 thickness <span class="sc">/</span> nplies,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>                                                 <span class="fl">0.0079</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt;    test condition batch panel thickness nplies strength modulus failure_mode</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; 1    WT       CTD     A     1     0.112     14  142.817   9.285          LAT</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; 2    WT       CTD     A     1     0.113     14  135.901   9.133          LAT</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; 3    WT       CTD     A     1     0.113     14  132.511   9.253          LAT</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; 4    WT       CTD     A     2     0.112     14  135.586   9.150          LAB</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; 5    WT       CTD     A     2     0.113     14  125.145   9.270          LAB</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; 6    WT       CTD     A     2     0.113     14  135.203   9.189          LGM</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; 7    WT       CTD     A     2     0.113     14  128.547   9.088          LAB</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt; 8    WT       CTD     B     1     0.113     14  127.709   9.199          LGM</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt; 9    WT       CTD     B     1     0.113     14  127.074   9.058          LGM</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt; 10   WT       CTD     B     1     0.114     14  126.879   9.306          LGM</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt;    strength.norm</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt; 1       144.6248</span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt; 2       138.8500</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt; 3       135.3865</span></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="co">#&gt; 4       137.3023</span></span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="co">#&gt; 5       127.8606</span></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="co">#&gt; 6       138.1369</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="co">#&gt; 7       131.3364</span></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="co">#&gt; 8       130.4803</span></span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="co">#&gt; 9       129.8315</span></span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="co">#&gt; 10      130.7794</span></span></code></pre></div>
 </div>
 <div id="calculating-single-point-basis-value" class="section level1">
 <h1>Calculating Single-Point Basis Value</h1>
-<p>The simplest thing that you will likely do is to calculate a basis value based of a set of numbers that you consider as unstructured data. An example of this would be calculating the B-Basis of the <code>RTD</code> warp tension (<code>WT</code>) data.</p>
-<p>There are a number of diagnostic tests that we should run before actually calculating a B-Basis value. We’ll talk about those later, but for now, let’s just get right to checking how the data are distributed and calculating the B-Basis.</p>
-<p>We’ll use an Anderson–Darling test to check if the data are normally distributed. The <code>cmstatr</code> package provides the function <code>anderson_darling_normal</code> and related functions for other distributions. We can run an Anderson–Darling test for normality on the warp tension RTD data as follows. We’ll perform this test on the normalized strength.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anderson_darling_normal</span>(strength.norm)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; anderson_darling_normal(data = ., x = strength.norm)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal ( n = 28 ) </span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test statistic:  A = 0.3805995 </span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; OSL (p-value):  0.3132051  (assuming unknown parameters)</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Conclusion: Sample is drawn from a Normal distribution ( alpha = 0.05 )</span></span></code></pre></div>
-<p>Now that we know that this data follows a normal distribution (since the observed significance level (OSL) of the Anderson–Darling test is greater than <span class="math inline">\(0.05\)</span>), we can proceed to calculate a basis value based based on the assumption of normally distributed data. The <code>cmstatr</code> package provides the function <code>basis_normal</code> as well as related functions for other distributions. By default, the B-Basis value is calculated, but other population proportions and confidence bounds can be specified (for example, specify <code>p = 0.99, conf = 0.99</code> for A-Basis).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">basis_normal</span>(strength.norm)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `outliers_within_batch` not run because parameter `batch` not specified</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `between_batch_variability` not run because parameter `batch` not specified</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; basis_normal(data = ., x = strength.norm)</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal    ( n = 28 )</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 129.9583</span></span></code></pre></div>
-<p>We see that the calculated B-Basis is <span class="math inline">\(129.96\)</span>. We also see two messages issued by the <code>cmstatr</code> package. These messages relate to the automated diagnostic tests performed by the basis calculation functions. In this case we see messages that two of the diagnostic tests were not performed because we didn’t specify the batch of each observation. The batch is not required for calculating single-point basis values, but it is required for performing batch-to-batch variability and within-batch outlier diagnostic tests.</p>
-<p>The <code>basis_normal</code> function performs the following diagnostic tests by default:</p>
+<p>The simplest thing that you will likely do is to calculate a basis
+value based of a set of numbers that you consider as unstructured data.
+An example of this would be calculating the B-Basis of the
+<code>RTD</code> warp tension (<code>WT</code>) data.</p>
+<p>There are a number of diagnostic tests that we should run before
+actually calculating a B-Basis value. We’ll talk about those later, but
+for now, let’s just get right to checking how the data are distributed
+and calculating the B-Basis.</p>
+<p>We’ll use an Anderson–Darling test to check if the data are normally
+distributed. The <code>cmstatr</code> package provides the function
+<code>anderson_darling_normal</code> and related functions for other
+distributions. We can run an Anderson–Darling test for normality on the
+warp tension RTD data as follows. We’ll perform this test on the
+normalized strength.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">anderson_darling_normal</span>(strength.norm)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; anderson_darling_normal(data = ., x = strength.norm)</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal ( n = 28 ) </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; Test statistic:  A = 0.3805995 </span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; OSL (p-value):  0.3132051  (assuming unknown parameters)</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; Conclusion: Sample is drawn from a Normal distribution ( alpha = 0.05 )</span></span></code></pre></div>
+<p>Now that we know that this data follows a normal distribution (since
+the observed significance level (OSL) of the Anderson–Darling test is
+greater than <span class="math inline">\(0.05\)</span>), we can proceed
+to calculate a basis value based based on the assumption of normally
+distributed data. The <code>cmstatr</code> package provides the function
+<code>basis_normal</code> as well as related functions for other
+distributions. By default, the B-Basis value is calculated, but other
+population proportions and confidence bounds can be specified (for
+example, specify <code>p = 0.99, conf = 0.99</code> for A-Basis).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">basis_normal</span>(strength.norm)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; `outliers_within_batch` not run because parameter `batch` not specified</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; `between_batch_variability` not run because parameter `batch` not specified</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; basis_normal(data = ., x = strength.norm)</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal    ( n = 28 )</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; 129.9583</span></span></code></pre></div>
+<p>We see that the calculated B-Basis is <span class="math inline">\(129.96\)</span>. We also see two messages issued
+by the <code>cmstatr</code> package. These messages relate to the
+automated diagnostic tests performed by the basis calculation functions.
+In this case we see messages that two of the diagnostic tests were not
+performed because we didn’t specify the batch of each observation. The
+batch is not required for calculating single-point basis values, but it
+is required for performing batch-to-batch variability and within-batch
+outlier diagnostic tests.</p>
+<p>The <code>basis_normal</code> function performs the following
+diagnostic tests by default:</p>
 <ul>
-<li>Within batch outliers using <code>maximum_normed_residual()</code></li>
+<li>Within batch outliers using
+<code>maximum_normed_residual()</code></li>
 <li>Between batch variability using <code>ad_ksample()</code></li>
 <li>Outliers using <code>maximum_normed_residual()</code></li>
 <li>Normality of data using <code>anderson_darling_normal()</code></li>
 </ul>
-<p>There are two ways that we can deal with the two messages that we see. We can pass in a column that specifies the batch for each observation, or we can override those two diagnostic tests so that <code>cmstatr</code> doesn’t run them.</p>
-<p>To override the two diagnostic tests, we set the argument <code>override</code> to a list of the names of the diagnostic tests that we want to skip. The names of the diagnostic tests that were not run are shown between back-ticks (`) in the message. Our call to <code>basis_normal()</code> would be updated as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">basis_normal</span>(strength.norm, </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">override =</span> <span class="fu">c</span>(<span class="st">&quot;outliers_within_batch&quot;</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;between_batch_variability&quot;</span>))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; basis_normal(data = ., x = strength.norm, override = c(&quot;outliers_within_batch&quot;, </span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &quot;between_batch_variability&quot;))</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal    ( n = 28 )</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following diagnostic tests were overridden:</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     `outliers_within_batch`,</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     `between_batch_variability`</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 129.9583</span></span></code></pre></div>
-<p>Obviously, you should be cautious about overriding the diagnostic tests. There are certainly times when it is appropriate to do so, but sound engineering judgment is required.</p>
-<p>The better approach would be to specify the batch. This can be done as follows:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">basis_normal</span>(strength.norm, batch)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: `between_batch_variability` failed: Anderson-Darling k-Sample test</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; indicates that batches are drawn from different distributions</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; basis_normal(data = ., x = strength.norm, batch = batch)</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal    ( n = 28 )</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following diagnostic tests failed:</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     `between_batch_variability`</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 129.9583</span></span></code></pre></div>
-<p>Now that batch is specified, we see that one of the diagnostic tests actually fails: the Anderson–Darling k-Sample test shows that the batches are not drawn from the same (unspecified) distribution. We can run this diagnostic test directly to investigate further:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ad_ksample</span>(strength.norm, batch)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ad_ksample(data = ., x = strength.norm, groups = batch)</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; N = 28           k = 3            </span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ADK = 6.65       p-value = 0.0025892 </span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Conclusion: Samples do not come from the same distribution (alpha = 0.025 )</span></span></code></pre></div>
-<p>For the Anderson–Darling k-Sample test, <span class="math inline">\(\alpha=0.025\)</span> is normally used. In this case the p-value is <span class="math inline">\(p=0.0026\)</span>, so it is no where near <span class="math inline">\(\alpha\)</span> (note the number of decimal places).</p>
-<p>We can plot the distribution of this data and make a judgment call about whether to continue.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(batch) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> strength.norm, <span class="at">color =</span> batch)) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_normal_surv_func</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_esf</span>() <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Distribution of Data For Each Batch&quot;</span>)</span></code></pre></div>
+<p>There are two ways that we can deal with the two messages that we
+see. We can pass in a column that specifies the batch for each
+observation, or we can override those two diagnostic tests so that
+<code>cmstatr</code> doesn’t run them.</p>
+<p>To override the two diagnostic tests, we set the argument
+<code>override</code> to a list of the names of the diagnostic tests
+that we want to skip. The names of the diagnostic tests that were not
+run are shown between back-ticks (`) in the message. Our call to
+<code>basis_normal()</code> would be updated as follows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">basis_normal</span>(strength.norm, </span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>               <span class="at">override =</span> <span class="fu">c</span>(<span class="st">&quot;outliers_within_batch&quot;</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>                            <span class="st">&quot;between_batch_variability&quot;</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt; basis_normal(data = ., x = strength.norm, override = c(&quot;outliers_within_batch&quot;, </span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt;     &quot;between_batch_variability&quot;))</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal    ( n = 28 )</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt; The following diagnostic tests were overridden:</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt;     `outliers_within_batch`,</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt;     `between_batch_variability`</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&gt; 129.9583</span></span></code></pre></div>
+<p>Obviously, you should be cautious about overriding the diagnostic
+tests. There are certainly times when it is appropriate to do so, but
+sound engineering judgment is required.</p>
+<p>The better approach would be to specify the batch. This can be done
+as follows:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">basis_normal</span>(strength.norm, batch)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; Warning: `between_batch_variability` failed: Anderson-Darling k-Sample test</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; indicates that batches are drawn from different distributions</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; basis_normal(data = ., x = strength.norm, batch = batch)</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal    ( n = 28 )</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; The following diagnostic tests failed:</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;     `between_batch_variability`</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; 129.9583</span></span></code></pre></div>
+<p>Now that batch is specified, we see that one of the diagnostic tests
+actually fails: the Anderson–Darling k-Sample test shows that the
+batches are not drawn from the same (unspecified) distribution. We can
+run this diagnostic test directly to investigate further:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">ad_ksample</span>(strength.norm, batch)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; ad_ksample(data = ., x = strength.norm, groups = batch)</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; N = 28           k = 3            </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; ADK = 6.65       p-value = 0.0025892 </span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; Conclusion: Samples do not come from the same distribution (alpha = 0.025 )</span></span></code></pre></div>
+<p>For the Anderson–Darling k-Sample test, <span class="math inline">\(\alpha=0.025\)</span> is normally used. In this
+case the p-value is <span class="math inline">\(p=0.0026\)</span>, so it
+is no where near <span class="math inline">\(\alpha\)</span> (note the
+number of decimal places).</p>
+<p>We can plot the distribution of this data and make a judgment call
+about whether to continue.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;WT&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">group_by</span>(batch) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> strength.norm, <span class="at">color =</span> batch)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="fu">stat_normal_surv_func</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">stat_esf</span>() <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Distribution of Data For Each Batch&quot;</span>)</span></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
-<p>We can also run the other diagnostic test by themselves. These are described in more detail in the following sections.</p>
+<p>We can also run the other diagnostic test by themselves. These are
+described in more detail in the following sections.</p>
 </div>
 <div id="calculating-basis-values-by-pooling-across-environments" class="section level1">
 <h1>Calculating Basis Values by Pooling Across Environments</h1>
-<p>In this section, we’ll use the fill-compression data from the <code>carbon.fabric.2</code> data set.</p>
+<p>In this section, we’ll use the fill-compression data from the
+<code>carbon.fabric.2</code> data set.</p>
 <div id="checking-for-outliers" class="section level2">
 <h2>Checking for Outliers</h2>
-<p>After checking that there are a sufficient number of conditions, batches and specimens and that the failure modes are consistent, we would normally check if there are outliers within each batch and condition. The maximum normed residual test can be used for this. The <code>cmstatr</code> package provides the function <code>maximum_normed_residual</code> to do this. First, we’ll group the data by condition and batch, then run the test on each group. The <code>maximum_normed_residual</code> function returns an object that contains a number of values. We’ll create a <code>data.frame</code> that contains those values.</p>
-<p>In order to do this, we need to use the <code>nest</code> function from the <code>tidyr</code> package. This is explained in detail <a href="https://tidyr.tidyverse.org/articles/nest.html">here</a>. Basically, <code>nest</code> allows a column of <code>list</code>s or a column of <code>data.frame</code>s to be added to a <code>data.frame</code>. Once nested, we can use the <code>glance</code> method to unpack the values returned by <code>maximum_normed_residual</code> into a one-row <code>data.frame</code>, and then use <code>unnest</code> to flatten this into a single <code>data.frame</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition, batch) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mnr =</span> <span class="fu">map</span>(data,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span><span class="fu">maximum_normed_residual</span>(<span class="at">data =</span> .x, <span class="at">x =</span> strength.norm)),</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">tidied =</span> <span class="fu">map</span>(mnr, glance)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(mnr, data)) <span class="sc">%&gt;%</span>  <span class="co"># remove unneeded columns</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(tidied)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 × 6</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   condition, batch [15]</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    condition batch   mnr alpha  crit n_outliers</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 CTD       A      1.48  0.05  1.89          0</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 CTD       B      1.72  0.05  1.89          0</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 CTD       C      1.52  0.05  1.89          0</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 RTD       A      1.34  0.05  1.89          0</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 RTD       B      1.47  0.05  1.89          0</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 RTD       C      1.52  0.05  1.89          0</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 ETD       A      1.66  0.05  1.89          0</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 ETD       B      1.53  0.05  1.89          0</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 ETD       C      1.40  0.05  1.89          0</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 ETW       A      1.45  0.05  1.89          0</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 ETW       B      1.83  0.05  1.89          0</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 ETW       C      1.76  0.05  1.89          0</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 ETW2      A      1.85  0.05  1.89          0</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 ETW2      B      1.54  0.05  1.89          0</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 ETW2      C      1.38  0.05  2.02          0</span></span></code></pre></div>
+<p>After checking that there are a sufficient number of conditions,
+batches and specimens and that the failure modes are consistent, we
+would normally check if there are outliers within each batch and
+condition. The maximum normed residual test can be used for this. The
+<code>cmstatr</code> package provides the function
+<code>maximum_normed_residual</code> to do this. First, we’ll group the
+data by condition and batch, then run the test on each group. The
+<code>maximum_normed_residual</code> function returns an object that
+contains a number of values. We’ll create a <code>data.frame</code> that
+contains those values.</p>
+<p>In order to do this, we need to use the <code>nest</code> function
+from the <code>tidyr</code> package. This is explained in detail <a href="https://tidyr.tidyverse.org/articles/nest.html">here</a>.
+Basically, <code>nest</code> allows a column of <code>list</code>s or a
+column of <code>data.frame</code>s to be added to a
+<code>data.frame</code>. Once nested, we can use the <code>glance</code>
+method to unpack the values returned by
+<code>maximum_normed_residual</code> into a one-row
+<code>data.frame</code>, and then use <code>unnest</code> to flatten
+this into a single <code>data.frame</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">group_by</span>(condition, batch) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mnr =</span> <span class="fu">map</span>(data,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                   <span class="sc">~</span><span class="fu">maximum_normed_residual</span>(<span class="at">data =</span> .x, <span class="at">x =</span> strength.norm)),</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>         <span class="at">tidied =</span> <span class="fu">map</span>(mnr, glance)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(mnr, data)) <span class="sc">%&gt;%</span>  <span class="co"># remove unneeded columns</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="fu">unnest</span>(tidied)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 15 × 6</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt; # Groups:   condition, batch [15]</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt;    condition batch   mnr alpha  crit n_outliers</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt;  1 CTD       A      1.48  0.05  1.89          0</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt;  2 CTD       B      1.72  0.05  1.89          0</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt;  3 CTD       C      1.52  0.05  1.89          0</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt;  4 RTD       A      1.34  0.05  1.89          0</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt;  5 RTD       B      1.47  0.05  1.89          0</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt;  6 RTD       C      1.52  0.05  1.89          0</span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt;  7 ETD       A      1.66  0.05  1.89          0</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt;  8 ETD       B      1.53  0.05  1.89          0</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt;  9 ETD       C      1.40  0.05  1.89          0</span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co">#&gt; 10 ETW       A      1.45  0.05  1.89          0</span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co">#&gt; 11 ETW       B      1.83  0.05  1.89          0</span></span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co">#&gt; 12 ETW       C      1.76  0.05  1.89          0</span></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="co">#&gt; 13 ETW2      A      1.85  0.05  1.89          0</span></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="co">#&gt; 14 ETW2      B      1.54  0.05  1.89          0</span></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co">#&gt; 15 ETW2      C      1.38  0.05  2.02          0</span></span></code></pre></div>
 <p>None of the groups have outliers, so we can continue.</p>
 </div>
 </div>
 <div id="batch-to-batch-distribution" class="section level1">
 <h1>Batch-to-Batch Distribution</h1>
-<p>Next, we will use the Anderson–Darling k-Sample test to check that each batch comes from the same distribution within each condition. We can use the <code>ad_ksample</code> function from <code>cmstatr</code> to do so. Once again, we’ll use <code>nest</code>/<code>unnest</code> and <code>glance</code> to do so.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition) <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">adk =</span> <span class="fu">map</span>(data, <span class="sc">~</span><span class="fu">ad_ksample</span>(<span class="at">data =</span> .x,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">x =</span> strength.norm,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">groups =</span> batch)),</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">tidied =</span> <span class="fu">map</span>(adk, glance)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(data, adk)) <span class="sc">%&gt;%</span>  <span class="co"># remove unneeded columns</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(tidied)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 8</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   condition [5]</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   condition alpha     n     k sigma    ad     p reject_same_dist</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;           </span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 CTD       0.025    18     3 0.944 1.76  0.505 FALSE           </span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 RTD       0.025    18     3 0.944 1.03  0.918 FALSE           </span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 ETD       0.025    18     3 0.944 0.683 0.997 FALSE           </span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 ETW       0.025    18     3 0.944 0.93  0.954 FALSE           </span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 ETW2      0.025    19     3 0.951 1.74  0.513 FALSE</span></span></code></pre></div>
-<p>For all conditions, the Anderson–Darling k-Sample test fails to reject the hypothesis that each batch comes from the same (unspecified) distribution. We can thus proceed to pooling the data.</p>
+<p>Next, we will use the Anderson–Darling k-Sample test to check that
+each batch comes from the same distribution within each condition. We
+can use the <code>ad_ksample</code> function from <code>cmstatr</code>
+to do so. Once again, we’ll use <code>nest</code>/<code>unnest</code>
+and <code>glance</code> to do so.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">group_by</span>(condition) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">adk =</span> <span class="fu">map</span>(data, <span class="sc">~</span><span class="fu">ad_ksample</span>(<span class="at">data =</span> .x,</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>                                     <span class="at">x =</span> strength.norm,</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>                                     <span class="at">groups =</span> batch)),</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>         <span class="at">tidied =</span> <span class="fu">map</span>(adk, glance)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(data, adk)) <span class="sc">%&gt;%</span>  <span class="co"># remove unneeded columns</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="fu">unnest</span>(tidied)</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 8</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#&gt; # Groups:   condition [5]</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a><span class="co">#&gt;   condition alpha     n     k sigma    ad     p reject_same_dist</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;           </span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a><span class="co">#&gt; 1 CTD       0.025    18     3 0.944 1.76  0.505 FALSE           </span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#&gt; 2 RTD       0.025    18     3 0.944 1.03  0.918 FALSE           </span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#&gt; 3 ETD       0.025    18     3 0.944 0.683 0.997 FALSE           </span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt; 4 ETW       0.025    18     3 0.944 0.93  0.954 FALSE           </span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt; 5 ETW2      0.025    19     3 0.951 1.74  0.513 FALSE</span></span></code></pre></div>
+<p>For all conditions, the Anderson–Darling k-Sample test fails to
+reject the hypothesis that each batch comes from the same (unspecified)
+distribution. We can thus proceed to pooling the data.</p>
 <div id="checking-for-outliers-within-each-condition" class="section level2">
 <h2>Checking for Outliers Within Each Condition</h2>
-<p>Just as we did when checking for outlier within each condition and each batch, we can pool all the batches (within each condition) and check for outliers within each condition.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(condition) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mnr =</span> <span class="fu">map</span>(data, <span class="sc">~</span><span class="fu">maximum_normed_residual</span>(<span class="at">data =</span> .x,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">x =</span> strength.norm)),</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">tidied =</span> <span class="fu">map</span>(mnr, glance)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(mnr, data)) <span class="sc">%&gt;%</span>  <span class="co"># remove unneeded columns</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(tidied)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   condition [5]</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   condition   mnr alpha  crit n_outliers</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 CTD        2.38  0.05  2.65          0</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 RTD        2.06  0.05  2.65          0</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 ETD        2.05  0.05  2.65          0</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 ETW        2.34  0.05  2.65          0</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 ETW2       2.07  0.05  2.68          0</span></span></code></pre></div>
+<p>Just as we did when checking for outlier within each condition and
+each batch, we can pool all the batches (within each condition) and
+check for outliers within each condition.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">group_by</span>(condition) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mnr =</span> <span class="fu">map</span>(data, <span class="sc">~</span><span class="fu">maximum_normed_residual</span>(<span class="at">data =</span> .x,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>                                                  <span class="at">x =</span> strength.norm)),</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>         <span class="at">tidied =</span> <span class="fu">map</span>(mnr, glance)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(mnr, data)) <span class="sc">%&gt;%</span>  <span class="co"># remove unneeded columns</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="fu">unnest</span>(tidied)</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 5</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; # Groups:   condition [5]</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt;   condition   mnr alpha  crit n_outliers</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; 1 CTD        2.38  0.05  2.65          0</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; 2 RTD        2.06  0.05  2.65          0</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt; 3 ETD        2.05  0.05  2.65          0</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; 4 ETW        2.34  0.05  2.65          0</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; 5 ETW2       2.07  0.05  2.68          0</span></span></code></pre></div>
 <p>We find no outliers, so we can continue.</p>
 </div>
 <div id="pooling-across-environments" class="section level2">
 <h2>Pooling Across Environments</h2>
-<p>Often it is desirable to pool data across several environments. There are two methods for doing so: “pooled standard deviation” and “pooled CV” (CV is an abbreviation for Coefficient of Variation)</p>
-<p>First, we will check for equality of variance among the conditions. We will do so using Levene’s test. The <code>cmstatr</code> package provides the function <code>levene_test</code> to do so.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(strength.norm, condition)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; levene_test(data = ., x = strength.norm, groups = condition)</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; n = 91           k = 5            </span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F = 5.260731     p-value = 0.0007727083 </span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Conclusion: Samples have unequal variance ( alpha = 0.05 )</span></span></code></pre></div>
-<p>The result from Levene’s test indicates that the variance for each condition is not equal. This indicates that the data cannot be pooled using the “pooled standard deviation” method.</p>
-<p>We can check if the data can be pooled using the “pooled CV” method. We’ll start by normalizing the data from each group to the group’s mean. The <code>cmstatr</code> package provides the function <code>normalize_group_mean</code> for this purpose.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">strength_norm_group =</span> <span class="fu">normalize_group_mean</span>(strength.norm, condition)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">levene_test</span>(strength_norm_group, condition)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; levene_test(data = ., x = strength_norm_group, groups = condition)</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; n = 91           k = 5            </span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F = 1.839645     p-value = 0.1285863 </span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Conclusion: Samples have equal variances ( alpha = 0.05 )</span></span></code></pre></div>
-<p>The Levene’s test thus shows the variances of the pooled data are equal. We can move on to performing an Anderson–Darling test for normality on the pooled data.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">strength_norm_group =</span> <span class="fu">normalize_group_mean</span>(strength.norm, condition)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anderson_darling_normal</span>(strength_norm_group)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; anderson_darling_normal(data = ., x = strength_norm_group)</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal ( n = 91 ) </span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Test statistic:  A = 0.3619689 </span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; OSL (p-value):  0.3812268  (assuming unknown parameters)</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Conclusion: Sample is drawn from a Normal distribution ( alpha = 0.05 )</span></span></code></pre></div>
-<p>The Anderson–Darling test indicates that the pooled data is drawn from a normal distribution, so we can continue with calculating basis values using the “pooled CV” method.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">basis_pooled_cv</span>(strength.norm, condition, batch)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; basis_pooled_cv(data = ., x = strength.norm, groups = condition, </span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     batch = batch)</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal - Pooled CV    ( n = 91, r = 5 )</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; CTD   85.09241 </span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ETD   66.55109 </span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ETW   51.43626 </span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ETW2  45.81318 </span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; RTD   78.2274</span></span></code></pre></div>
-<p>The conditions listed in the output above are in alphabetical order. This probably isn’t what you want. Instead, you probably want the conditions listed in a certain order. This can be done by ordering the data first as demonstrated below. You’re probably just do this one in at the start of your analysis.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">ordered</span>(condition,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">c</span>(<span class="st">&quot;CTD&quot;</span>, <span class="st">&quot;RTD&quot;</span>, <span class="st">&quot;ETD&quot;</span>, <span class="st">&quot;ETW&quot;</span>, <span class="st">&quot;ETW2&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">basis_pooled_cv</span>(strength.norm, condition, batch)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; basis_pooled_cv(data = ., x = strength.norm, groups = condition, </span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     batch = batch)</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal - Pooled CV    ( n = 91, r = 5 )</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; CTD   85.09241 </span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; RTD   78.2274 </span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ETD   66.55109 </span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ETW   51.43626 </span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ETW2  45.81318</span></span></code></pre></div>
+<p>Often it is desirable to pool data across several environments. There
+are two methods for doing so: “pooled standard deviation” and “pooled
+CV” (CV is an abbreviation for Coefficient of Variation)</p>
+<p>First, we will check for equality of variance among the conditions.
+We will do so using Levene’s test. The <code>cmstatr</code> package
+provides the function <code>levene_test</code> to do so.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">levene_test</span>(strength.norm, condition)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">#&gt; levene_test(data = ., x = strength.norm, groups = condition)</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co">#&gt; n = 91           k = 5            </span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#&gt; F = 5.260731     p-value = 0.0007727083 </span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co">#&gt; Conclusion: Samples have unequal variance ( alpha = 0.05 )</span></span></code></pre></div>
+<p>The result from Levene’s test indicates that the variance for each
+condition is not equal. This indicates that the data cannot be pooled
+using the “pooled standard deviation” method.</p>
+<p>We can check if the data can be pooled using the “pooled CV” method.
+We’ll start by normalizing the data from each group to the group’s mean.
+The <code>cmstatr</code> package provides the function
+<code>normalize_group_mean</code> for this purpose.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>    <span class="at">strength_norm_group =</span> <span class="fu">normalize_group_mean</span>(strength.norm, condition)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="fu">levene_test</span>(strength_norm_group, condition)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; levene_test(data = ., x = strength_norm_group, groups = condition)</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; n = 91           k = 5            </span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; F = 1.839645     p-value = 0.1285863 </span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt; Conclusion: Samples have equal variances ( alpha = 0.05 )</span></span></code></pre></div>
+<p>The Levene’s test thus shows the variances of the pooled data are
+equal. We can move on to performing an Anderson–Darling test for
+normality on the pooled data.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    <span class="at">strength_norm_group =</span> <span class="fu">normalize_group_mean</span>(strength.norm, condition)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="fu">anderson_darling_normal</span>(strength_norm_group)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; anderson_darling_normal(data = ., x = strength_norm_group)</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal ( n = 91 ) </span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; Test statistic:  A = 0.3619689 </span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; OSL (p-value):  0.3812268  (assuming unknown parameters)</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt; Conclusion: Sample is drawn from a Normal distribution ( alpha = 0.05 )</span></span></code></pre></div>
+<p>The Anderson–Darling test indicates that the pooled data is drawn
+from a normal distribution, so we can continue with calculating basis
+values using the “pooled CV” method.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">basis_pooled_cv</span>(strength.norm, condition, batch)</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt; basis_pooled_cv(data = ., x = strength.norm, groups = condition, </span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt;     batch = batch)</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal - Pooled CV    ( n = 91, r = 5 )</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co">#&gt; CTD   85.09241 </span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co">#&gt; ETD   66.55109 </span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co">#&gt; ETW   51.43626 </span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#&gt; ETW2  45.81318 </span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="co">#&gt; RTD   78.2274</span></span></code></pre></div>
+<p>The conditions listed in the output above are in alphabetical order.
+This probably isn’t what you want. Instead, you probably want the
+conditions listed in a certain order. This can be done by ordering the
+data first as demonstrated below. You’re probably just do this one in at
+the start of your analysis.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>norm_data <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="fu">ordered</span>(condition,</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>                             <span class="fu">c</span>(<span class="st">&quot;CTD&quot;</span>, <span class="st">&quot;RTD&quot;</span>, <span class="st">&quot;ETD&quot;</span>, <span class="st">&quot;ETW&quot;</span>, <span class="st">&quot;ETW2&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="fu">basis_pooled_cv</span>(strength.norm, condition, batch)</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#&gt; basis_pooled_cv(data = ., x = strength.norm, groups = condition, </span></span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co">#&gt;     batch = batch)</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co">#&gt; Distribution:  Normal - Pooled CV    ( n = 91, r = 5 )</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="co">#&gt; B-Basis:   ( p = 0.9 , conf = 0.95 )</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="co">#&gt; CTD   85.09241 </span></span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="co">#&gt; RTD   78.2274 </span></span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="co">#&gt; ETD   66.55109 </span></span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co">#&gt; ETW   51.43626 </span></span>
+<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co">#&gt; ETW2  45.81318</span></span></code></pre></div>
 </div>
 </div>
 <div id="equivalency" class="section level1">
 <h1>Equivalency</h1>
-<p>Eventually, once you’ve finished calculating all your basis values, you’ll probably want to set specification requirements or evaluate site/process equivalency. <code>cmstatr</code> has functionality to do both.</p>
-<p>Let’s say that you want to develop specification limits for fill compression that you’re going to put in your material specification. You can do this as follows:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>carbon.fabric<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">equiv_mean_extremum</span>(strength, <span class="at">n_sample =</span> <span class="dv">5</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; equiv_mean_extremum(df_qual = ., data_qual = strength, n_sample = 5, </span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     alpha = 0.01)</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; For alpha = 0.01 and n = 5 </span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ( k1 = 3.071482 and k2 = 1.142506 )</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Min Individual    Sample Mean    </span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Thresholds:     69.89842         82.16867</span></span></code></pre></div>
-<p>If you’re determining equivalency limits for modulus, a different approach is generally used so that bilateral limits are set. <code>cmstatr</code> can do this as well, using the function <code>equiv_change_mean</code>.</p>
+<p>Eventually, once you’ve finished calculating all your basis values,
+you’ll probably want to set specification requirements or evaluate
+site/process equivalency. <code>cmstatr</code> has functionality to do
+both.</p>
+<p>Let’s say that you want to develop specification limits for fill
+compression that you’re going to put in your material specification. You
+can do this as follows:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>carbon.fabric<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">filter</span>(test <span class="sc">==</span> <span class="st">&quot;FC&quot;</span> <span class="sc">&amp;</span> condition <span class="sc">==</span> <span class="st">&quot;RTD&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">equiv_mean_extremum</span>(strength, <span class="at">n_sample =</span> <span class="dv">5</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt; equiv_mean_extremum(df_qual = ., data_qual = strength, n_sample = 5, </span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt;     alpha = 0.01)</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt; For alpha = 0.01 and n = 5 </span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt; ( k1 = 3.071482 and k2 = 1.142506 )</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt;                   Min Individual    Sample Mean    </span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt;      Thresholds:     69.89842         82.16867</span></span></code></pre></div>
+<p>If you’re determining equivalency limits for modulus, a different
+approach is generally used so that bilateral limits are set.
+<code>cmstatr</code> can do this as well, using the function
+<code>equiv_change_mean</code>.</p>
 </div>
 
 
