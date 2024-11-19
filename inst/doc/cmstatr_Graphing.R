@@ -55,6 +55,18 @@ dat %>%
 
 ## -----------------------------------------------------------------------------
 dat %>%
+  ggplot(aes(x = batch, y = strength)) +
+  geom_boxplot() +
+  geom_jitter_failure_mode(aes(color = failure_mode, shape = failure_mode), width = 0.25) +
+  geom_hline(aes(yintercept = value),
+             data = b_basis_pooled$basis %>% rename(condition = group),
+             color = "blue") +
+  facet_grid(. ~ condition) +
+  theme_bw() +
+  ggtitle("Batch Plot with Failure Modes")
+
+## -----------------------------------------------------------------------------
+dat %>%
   ggplot(aes(x = strength, color = condition)) +
   stat_ecdf(geom = "point") +
   coord_flip() +

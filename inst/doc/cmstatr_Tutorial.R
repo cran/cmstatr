@@ -63,9 +63,12 @@ norm_data %>%
                             "between_batch_variability"))
 
 ## -----------------------------------------------------------------------------
-norm_data %>%
+b_basis_wt_rtd <- norm_data %>%
   filter(test == "WT" & condition == "RTD") %>%
   basis_normal(strength.norm, batch)
+
+## -----------------------------------------------------------------------------
+b_basis_wt_rtd$diagnostic_obj$between_batch_variability
 
 ## -----------------------------------------------------------------------------
 norm_data %>%
@@ -152,6 +155,11 @@ if ((norm_data %>%
 ## -----------------------------------------------------------------------------
 norm_data %>%
   filter(test == "FC") %>%
+  condition_summary(strength.norm, condition, "RTD")
+
+## -----------------------------------------------------------------------------
+norm_data %>%
+  filter(test == "FC") %>%
   levene_test(strength.norm, condition)
 
 ## ----include=FALSE------------------------------------------------------------
@@ -199,11 +207,16 @@ norm_data %>%
   basis_pooled_cv(strength.norm, condition, batch)
 
 ## -----------------------------------------------------------------------------
-norm_data %>%
+basis_res <- norm_data %>%
   mutate(condition = ordered(condition,
                              c("CTD", "RTD", "ETD", "ETW", "ETW2"))) %>%
   filter(test == "FC") %>%
   basis_pooled_cv(strength.norm, condition, batch)
+basis_res
+
+## -----------------------------------------------------------------------------
+basis_res %>%
+  condition_summary("RTD")
 
 ## -----------------------------------------------------------------------------
 carbon.fabric.2 %>%

@@ -1,8 +1,8 @@
 Package: cmstatr
 Type: Package
 Title: Statistical Methods for Composite Material Data
-Version: 0.9.3
-Date: 2024-03-13
+Version: 0.10.0
+Date: 2024-11-18
 Depends: R (>= 3.3)
 Authors@R: c(
     person("Stefan", "Kloppenborg", email = "stefan@kloppenborg.ca",
@@ -13,6 +13,8 @@ Authors@R: c(
     person("Ally", "Fraser", email = "ally.fraser25@gmail.com",
       role = c("ctb")),
     person("Jeffrey", "Borlik",
+      role = c("ctb")),
+    person("Brice", "Langston", email = "tblangst@gmail.com",
       role = c("ctb")),
     person("Comtek Advanced Structures, Ltd.",
       role = c("fnd"))
@@ -37,20 +39,21 @@ License: AGPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: dplyr, generics, ggplot2, kSamples, MASS, purrr, rlang, stats,
-        tibble
-Suggests: knitr, lintr, rmarkdown, spelling, testthat, tidyr, vdiffr
-RoxygenNote: 7.3.1
+        tibble, tidyr
+Suggests: knitr, lintr, rmarkdown, spelling, testthat, vdiffr
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Language: en-US
 Config/testthat/parallel: true
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2024-03-14 13:30:55 UTC; stefan
+Packaged: 2024-11-19 04:04:50 UTC; stefan
 Author: Stefan Kloppenborg [aut, cre] (<https://orcid.org/0000-0002-1908-5214>),
   Billy Cheng [ctb],
   Ally Fraser [ctb],
   Jeffrey Borlik [ctb],
+  Brice Langston [ctb],
   Comtek Advanced Structures, Ltd. [fnd]
 Maintainer: Stefan Kloppenborg <stefan@kloppenborg.ca>
 Repository: CRAN
-Date/Publication: 2024-03-14 14:30:02 UTC
+Date/Publication: 2024-11-19 07:50:08 UTC
